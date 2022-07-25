@@ -1,0 +1,14 @@
+name: sqlrunner
+version: '${version}'
+main: com.oskarsmc.oskar.sqlrunner.SqlRunnerPlugin
+api-version: 1.19
+prefix: sqlrunner
+load: STARTUP
+authors: [ OskarZyg ]
+description: sql runner (NOT FOR USE IN PRODUCTION)
+website: https://oskar.oskarsmc.com/
+libraries:
+  - com.zaxxer:HikariCP:5.0.1
+  - cloud.commandframework:cloud-paper:1.7.0
+  - com.google.inject:guice:5.0.1
+  - org.mybatis:mybatis:3.5.10
