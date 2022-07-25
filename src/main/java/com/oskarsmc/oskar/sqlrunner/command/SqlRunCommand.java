@@ -52,6 +52,8 @@ public class SqlRunCommand {
                     try {
                         Connection connection = databaseManager.hikariPool().getConnection();
                         connection.createStatement().execute(context.get("query"));
+                        connection.commit();
+                        connection.close();
                     } catch (SQLException e) {
                         context.getSender().sendMessage("Error: " + e.getMessage());
                         throw new RuntimeException(e);
@@ -69,6 +71,8 @@ public class SqlRunCommand {
                         ScriptRunner runner = new ScriptRunner(connection);
                         Reader reader = new BufferedReader(new FileReader((String) context.get("file")));
                         runner.runScript(reader);
+                        connection.commit();
+                        connection.close();
                     } catch (SQLException | FileNotFoundException e) {
                         context.getSender().sendMessage("Error: " + e.getMessage());
                         throw new RuntimeException(e);
